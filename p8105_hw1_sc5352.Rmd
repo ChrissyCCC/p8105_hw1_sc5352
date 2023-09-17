@@ -1,0 +1,60 @@
+---
+title: "p8105_hw1_sc5352.Rmd"
+author: "Chrissy Chen"
+date: "2023-09-17"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 1
+
+```{r installpackage}
+#install.packages("moderndive")
+library(moderndive)
+library(tidyverse)
+library(Hmisc)
+```
+
+```{r problem1}
+data = get("early_january_weather")
+summary(data)
+describe(data)
+
+
+# Get the variable names in the dataset
+var_name = variable.names(data)
+var_name
+
+# Get the number of rows and columns in the dataset
+nrow(data)
+ncol(data)
+
+
+# The mean temperature
+mean(data$temp)
+
+
+#scatterplot
+scatterplot = ggplot(data, aes(x = data$time_hour, y = data$temp, color = humid)) + geom_point()
+scatterplot
+ggsave("scatterplot.pdf", plot = scatterplot)
+```
+
+## Problem 2
+```{r problem2}
+df = tibble(
+  vec_num = rnorm(10),
+  vec_logical = vec_num > 0,
+  vec_char = c("1","2","3","4","5","6","7","8","9","0"),
+  vec_factor = factor(c("high","median","low","high","median","low","high","median","low","high"))
+)
+df
+mean(df$vec_num)
+mean(as.numeric(df$vec_logical))
+mean(as.numeric(df$vec_char))
+mean(as.numeric(df$vec_factor))
+```
+
