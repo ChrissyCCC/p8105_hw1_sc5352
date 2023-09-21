@@ -12,10 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Problem 1
 
 ```{r installpackage}
-#install.packages("moderndive")
 library(moderndive)
 library(tidyverse)
-library(Hmisc)
 ```
 
 ```{r problem1}
@@ -44,10 +42,14 @@ df = tibble(
   vec_factor = factor(c("high","median","low","high","median","low","high","median","low","high"))
 )
 df
+```
+
+```{r, warning=FALSE, results='hide'}
 mean(df$vec_num)
 mean(as.numeric(df$vec_logical))
 mean(as.numeric(df$vec_char))
 mean(as.numeric(df$vec_factor))
 ```
+
 
 The `mean` function works for the numerical and logical variables, but not for the character and factor vectors. The reason might be that character and factor vectors do not have the numerical meanings. After using `as. numeric` function, I can calculate all four means since this function changes data type into something calculable.
