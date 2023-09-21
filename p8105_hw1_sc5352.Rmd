@@ -18,10 +18,11 @@ library(tidyverse)
 
 ```{r problem1}
 data = get("early_january_weather")
+data
 ```
 
 ### Descrption  
-The dataset has `r nrow(data)` rows and `r ncol(data)` columns. The mean temperature is `r mean(data$temp)`. Variables are `r variable.names(data)`.
+The dataset has `r nrow(data)` rows and `r ncol(data)` columns. The mean temperature is `r mean(data$temp)`. Variables are `r variable.names(data)` (origin, year, month, day, hour, temperature, dewpoint, humidity, wind direction and wind speed). Notice that temperature reaches the lowest point at 6 and highest at 10. Also, wind speed is lowest at 2 and highest at 7 and 9.   
 
 ### Scatterplot
 
