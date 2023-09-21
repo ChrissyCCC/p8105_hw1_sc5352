@@ -20,28 +20,20 @@ library(Hmisc)
 
 ```{r problem1}
 data = get("early_january_weather")
-summary(data)
-describe(data)
+```
 
+### Descrption  
+The dataset has `r nrow(data)` rows and `r ncol(data)` columns. The mean temperature is `r mean(data$temp)`. Variables are `r variable.names(data)`.
 
-# Get the variable names in the dataset
-var_name = variable.names(data)
-var_name
+### Scatterplot
 
-# Get the number of rows and columns in the dataset
-nrow(data)
-ncol(data)
-
-
-# The mean temperature
-mean(data$temp)
-
-
-#scatterplot
-scatterplot = ggplot(data, aes(x = data$time_hour, y = data$temp, color = humid)) + geom_point()
+```{r}
+scatterplot = ggplot(data, aes(x = time_hour, y = temp, color = humid)) + geom_point()
 scatterplot
 ggsave("scatterplot.pdf", plot = scatterplot)
 ```
+
+In this plot, the overall temperature increases and reaches a temporary peak on Jan 14th. Also, the humidity is high around Jan 14th.  
 
 ## Problem 2
 ```{r problem2}
@@ -58,3 +50,4 @@ mean(as.numeric(df$vec_char))
 mean(as.numeric(df$vec_factor))
 ```
 
+The `mean` function works for the numerical and logical variables, but not for the character and factor vectors. The reason might be that character and factor vectors do not have the numerical meanings. After using `as. numeric` function, I can calculate all four means since this function changes data type into something calculable.
