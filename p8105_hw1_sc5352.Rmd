@@ -43,7 +43,13 @@ df = tibble(
   vec_factor = factor(c("high","median","low","high","median","low","high","median","low","high"))
 )
 df
+mean(pull(df,var=1))
+mean(pull(df,var=2))
+mean(pull(df,var=3))
+mean(pull(df,var=4))
 ```
+
+The `mean` function works for the numerical and logical variables, but not for the character and factor vectors. The reason might be that character and factor vectors do not have the numerical meanings. 
 
 ```{r, warning=FALSE, results='hide'}
 mean(df$vec_num)
@@ -52,5 +58,4 @@ mean(as.numeric(df$vec_char))
 mean(as.numeric(df$vec_factor))
 ```
 
-
-The `mean` function works for the numerical and logical variables, but not for the character and factor vectors. The reason might be that character and factor vectors do not have the numerical meanings. After using `as. numeric` function, I can calculate all four means since this function changes data type into something calculable.
+After using `as. numeric` function, I can calculate all four means since this function changes data type into something calculable.
